@@ -5,7 +5,7 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
         .state({
             name: 'home',
             url: '/home',
-            template: `<h1 >home <button ui-sref="test">打开test页面</button></h1>`
+            template: `<h1 >home <button ui-sref="test">打开test页面</button> | <button ui-sref="welcome">打开welcome页面</button></h1>`
         })
         .state({
             name: 'test',
