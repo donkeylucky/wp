@@ -1,7 +1,16 @@
 routing.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider']
+
 export default function routing($stateProvider, $locationProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home')
     $stateProvider
-        .state('home', { url: '/home', template: '<h1>home</h1>' })
-        .state('test', { url: '/test', template: '<test></test>' })
+        .state({
+            name: 'home',
+            url: '/home',
+            template: `<h1 >home <button ui-sref="test">打开test页面</button></h1>`
+        })
+        .state({
+            name: 'test',
+            url: '/test',
+            template: `<test></test>`
+        })
 }
