@@ -5,8 +5,10 @@ import appRouter from './router/'
 import components from './components'
 import ocLazyLoad from 'oclazyload'
 
-//把BSMS注册到全局
-export const BSMS = angular.module('BSMS', [uiRouter, ocLazyLoad, components])
+import pages from './pages'
+
+//老母
+const BSMS = angular.module('BSMS', [uiRouter, ocLazyLoad, components, pages.name])
 
 // 创建一个路由入口组件
 const appComponent = { restrict: 'E', template: '<div ui-view></div>', controllerAs: 'app' }

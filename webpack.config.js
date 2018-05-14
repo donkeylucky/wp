@@ -10,7 +10,7 @@ function resolve(dir) {
 
 
 module.exports = {
-    mode:'none',
+    mode:'none', //选择模式 (告知 webpack 使用相应模式的内置优化)
     context:path.resolve(__dirname,'./src'), //绝对路径 当前入口文件的绝对路径
     entry:{ //从这个起点开始，应用程序启动执行。如果传递一个数组，那么数组的每一项都会执行。
         // 'vendor':['angular', 'angular-ui-router'],

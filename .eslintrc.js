@@ -11,7 +11,7 @@ module.exports = {
         jquery:true
     },
     globals:{
-        'angular':true //定义angular为全局变量
+        'angular':true, //定义angular为全局变量
     },
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
     extends:'standard',

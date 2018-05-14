@@ -1,5 +1,4 @@
 routing.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider']
-
 export default function routing($stateProvider, $locationProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home')
     $stateProvider
@@ -11,6 +10,11 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
         .state({
             name: 'test',
             url: '/test',
-            template: `<test></test>`
+            component: 'uiTest'
+        })
+        .state({
+            name: 'welcome',
+            url: '/welcome',
+            component: 'welcome'
         })
 }
