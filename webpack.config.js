@@ -14,7 +14,7 @@ module.exports = {
     context:path.resolve(__dirname,'./src'), //绝对路径 当前入口文件的绝对路径
     entry:{ //从这个起点开始，应用程序启动执行。如果传递一个数组，那么数组的每一项都会执行。
         // 'vendor':['angular', 'angular-ui-router'],
-        main:'./main.js'
+        dev:'./main.js'
     },
     output:{
         path:path.resolve(__dirname, './dist'), //打包好后输出位置
@@ -25,18 +25,18 @@ module.exports = {
         // 载入各种文件的工具
         rules:[
             {
-                enforce:"pre",
+                enforce:"pre",   //必须要最先执行要不就会出现诡异报错或是警告
                 test:/\.js$/,
                 include:[resolve('src')],
                 loader:"eslint-loader",
                 options:{
                     emitWarning:true,
-                    // fix:true,            // 帮你修复但不是万能的
+                    fix:true,            // 帮你修复但不是万能的
                 }
             },
             // BABEL
             {
-                enforce:'pre',
+                // enforce:'pre',
                 test:/\.js$/,
                 loader:'babel-loader',
                 include:[resolve('src')],

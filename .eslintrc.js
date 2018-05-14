@@ -3,15 +3,15 @@
 module.exports = {
     root:true,
     parser:'babel-eslint',
-    parserOptions:{
+    parserOptions:{ //启用语法支持
         sourceType:'module'
     },
-    env:{
+    env:{   //全局变量
         browser:true,
         jquery:true
     },
     globals:{
-        BASE_URL:false
+        'angular':true //定义angular为全局变量
     },
     // https://github.com/standard/standard/blob/master/docs/RULES-en.md
     extends:'standard',
@@ -20,15 +20,16 @@ module.exports = {
         'html',
         'prettier'
     ],
+
     // add your custom rules here
     'rules':{
         //官方文档 http://eslint.cn/docs/2.0.0/rules/
         //参数：0 关闭，1 警告，2 错误
 
         // allow debugger during development
-        'no-debugger':process.env.NODE_ENV === 'production' ? 2 : 0,
+        //'no-debugger':process.env.NODE_ENV === 'production' ? 2 : 0,
 
-        // "prettier/prettier":"error",
+        'prettier/prettier':2,                      // 加入prettier规则
 
         'eqeqeq':0,                                 // 强制===替代==运算
         'indent':[1, 4],                            // 使用4个空格缩进
@@ -57,7 +58,7 @@ module.exports = {
         'arrow-spacing':0,
         'no-eq-null':0,
 
-        "semi-spacing":0,
+        'semi-spacing':0,
 
         // allow paren-less arrow functions
         'arrow-parens':0,
@@ -65,7 +66,7 @@ module.exports = {
         'generator-star-spacing':0,
 
         //使用前未定义
-        'no-use-before-define':[0,'nofunc'],
+        'no-use-before-define':[0, 'nofunc'],
 
         'complexity':[0, 10], //圈复杂度大于*
 

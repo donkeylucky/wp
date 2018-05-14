@@ -4,8 +4,9 @@
     "description": "",
     "main": "./src/main.js",
     "scripts": {
-        "prettier-watch": "onchange \"./src/**/*.{js,json,scss}\" -- prettier --write {{changed}}",
-        "start": "webpack-dev-server --hot --inline"
+        "start": "webpack-dev-server --hot --inline",
+        "lint":"eslint src --ext .js",
+        "prettier-watch": "onchange \"./src/**/*.{js,json,scss}\" -- prettier --write {{changed}}"
     },
     "repository": {
         "type": "git",

@@ -1,2 +1,7 @@
 import test from './test'
-export default window.angular.module('components', [test]).name
+
+export default angular.module('components', [test]).name
+
+/*let xxx = ccc => {
+    console.log('erwerwer')
+}*/

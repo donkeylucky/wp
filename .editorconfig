@@ -1,9 +1,23 @@
+#当打开一个文件时，EditorConfig插件会在打开文件的目录和其每一级父目录查找.editorconfig文件，直到有一个配置文件
 root = true
 
+#匹配除/之外的任意字符串
 [*]
+
+#编码格式，支持latin1、utf-8、utf-8-bom、utf-16be和utf-16le，不建议使用uft-8-bom。
 charset = utf-8
+
+#设定用什么方式进行缩进
 indent_style = space
+
+#缩进的大小
 indent_size = 4
+
+#定义换行符，支持lf、cr和crlf。
 end_of_line = lf
+
+#设为true表明使文件以一个空白行结尾，false反之。
 insert_final_newline = true
+
+#设为true表示会除去换行行首的任意空白字符，false反之
 trim_trailing_whitespace = true
