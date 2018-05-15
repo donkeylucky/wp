@@ -1,0 +1,8 @@
+<div class="container-fluid">
+    <ui-test></ui-test>
+    <h3>lazyLoad</h3>
+    <button ng-click="ctrl.switchBtn()">展开/收起</button>
+    <ul class="lazyLoad" ng-show="ctrl.list">
+        <li ng-repeat="item in ::ctrl.menuItems track by $index">{{item.name}}</li>
+    </ul>
+</div>

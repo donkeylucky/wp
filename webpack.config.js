@@ -1,5 +1,6 @@
 // Modules
 const path = require('path');   //node获取文档路径
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin'); // 帮生成html文件并帮你把打包好的文件嵌入html中
 // const ExtractTextPlugin = require('extract-text-webpack-plugin'); //提取指定类型的文件为一个单独文件
 // const CleanWebpackPlugin = require('clean-webpack-plugin'); //打包前清理一次dist文件夹
@@ -7,6 +8,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin'); // 帮生成html文件
 function resolve(dir) {
     return path.join(__dirname, '.', dir)
 }
+
+const port = 9000; //端口号
 
 
 module.exports = {
@@ -102,13 +105,20 @@ module.exports = {
     plugins:[
         new HtmlWebPackPlugin({
             template:"index.html"
-        })
+        }),
+        new FriendlyErrorsPlugin({
+            compilationSuccessInfo:{
+                messages:[`开发环境访问地址: http://localhost:${port}`],
+                notes:[`开整`]
+            },
+        }),
     ],
 
     devServer:{
-        contentBase:path.join(__dirname, "dist"),
-        compress:true,
-        port:9000
+        contentBase:path.join(__dirname, "dist"),  //设置
+        compress:true, // 启用gzip
+        port:port,  // 设置端口
+        quiet:true, //关闭一大堆log信息
+        clientLogLevel:'warning', // 设置发出警告的级别
     }
-
 }

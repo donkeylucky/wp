@@ -8,7 +8,8 @@ module.exports = {
     },
     env:{   //全局变量
         browser:true,
-        jquery:true
+        jquery:true,
+        node:true
     },
     globals:{
         'angular':true, //定义angular为全局变量
