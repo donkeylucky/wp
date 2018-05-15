@@ -1,4 +1,8 @@
+// 看这个就够了 https://webpack.docschina.org/configuration/
+
+
 // Modules
+const webpack = require('webpack')
 const path = require('path');   //node获取文档路径
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const HtmlWebPackPlugin = require('html-webpack-plugin'); // 帮生成html文件并帮你把打包好的文件嵌入html中
@@ -11,12 +15,13 @@ function resolve(dir) {
 
 const port = 9000; //端口号
 
+console.log([`开发环境访问地址: http://localhost:${port}`]);
 
 module.exports = {
     mode:'none', //选择模式 (告知 webpack 使用相应模式的内置优化)
     context:path.resolve(__dirname,'./src'), //绝对路径 当前入口文件的绝对路径
     entry:{ //从这个起点开始，应用程序启动执行。如果传递一个数组，那么数组的每一项都会执行。
-        // 'vendor':['angular', 'angular-ui-router'],
+        //vendors:['angular', 'angular-ui-router'],
         dev:'./main.js'
     },
     output:{
@@ -24,6 +29,7 @@ module.exports = {
         publicPath:'/', //该配置能帮助你为项目中的所有资源指定一个基础路径, 可以解决生产环境和开发环境路径不同的问题
         filename:'[name].js'
     },
+    externals:[/^@angular\//],
     module:{
         // 载入各种文件的工具
         rules:[
@@ -103,22 +109,36 @@ module.exports = {
     },
 
     plugins:[
+        new webpack.HotModuleReplacementPlugin(), // 热加载
+        new webpack.NamedModulesPlugin(), // 当开启 HMR 的时候使用该插件会显示模块的相对路径.
+        new webpack.NoEmitOnErrorsPlugin(), //在编译出现错误时，使用 NoEmitOnErrorsPlugin 来跳过输出阶段
+        /*new webpack.optimize.SplitChunksPlugin({
+            cacheGroups:{
+                commons:{
+                    test:/[\\/]node_modules[\\/]/,
+                    name:"vendors",
+                    chunks:"all"
+                }
+            }
+        }),*/
         new HtmlWebPackPlugin({
             template:"index.html"
         }),
         new FriendlyErrorsPlugin({
-            compilationSuccessInfo:{
+            /*compilationSuccessInfo:{
                 messages:[`开发环境访问地址: http://localhost:${port}`],
                 notes:[`开整`]
-            },
+            },*/
         }),
     ],
 
     devServer:{
-        contentBase:path.join(__dirname, "dist"),  //设置
+        contentBase:path.join(__dirname, "dist"),
         compress:true, // 启用gzip
         port:port,  // 设置端口
         quiet:true, //关闭一大堆log信息
         clientLogLevel:'warning', // 设置发出警告的级别
+        noInfo:true,
+        hot:true,
     }
 }
