@@ -5,9 +5,8 @@
     <p>carbon 是一个用来生成代码截图的网站，通常大家在 Twitter 上看到的代码美图就是用它来做的。carbon 支持多种颜色主题和几乎所有编程语言的高亮显示</h4>
     <p>carbon 是一个用来生成代码截图的网站，通常大家在 Twitter 上看到的代码美图就是用它来做的。carbon 支持多种颜色主题和几乎所有编程语言的高亮显示carbon 是一个用来生成代码截图的网站，通常大家在 Twitter 上看到的代码美图就是用它来做的。carbon 支持多种颜色主题和几乎所有编程语言的高亮显示 </p>
     <h4>目前流行的基于 BS4 的控制面板 UI 框架 tabler 相继推出了 React 和 Angular 的组件库</h4>
-    <ul class="welcome">
-        <li>Gitfa 是一个用来分析你的 GitHub 数据的网站，你可以请访问</li>
-        <li>JavaScript Boolean 对象是一个布尔值的对象包装器</li>
-        <li>Chrome Canary新版内存面板中已经将全部 JS 虚拟机全部列出来</li>
+    <button ng-click="ctrl.switchBtn()">展开/收起</button>
+    <ul class="welcome" ng-show="ctrl.list">
+        <li ng-repeat="item in ::ctrl.menuItems track by $index">{{item.name}}</li>
     </ul>
 </div>

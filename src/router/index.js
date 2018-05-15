@@ -1,6 +1,13 @@
+// 去把pages文件夹下面的所有的_route.js文件扒出来
+const pagesRoutes = (r => {
+    return r.keys().map(key => r(key))
+})(require.context('../pages', true, /.*_route.js$/))
+
 routing.$inject = ['$stateProvider', '$locationProvider', '$urlRouterProvider']
 export default function routing($stateProvider, $locationProvider, $urlRouterProvider) {
     $urlRouterProvider.otherwise('/home')
+
+    //静态路由
     $stateProvider
         .state({
             name: 'home',
@@ -12,9 +19,11 @@ export default function routing($stateProvider, $locationProvider, $urlRouterPro
             url: '/test',
             component: 'uiTest'
         })
-        .state({
-            name: 'welcome',
-            url: '/welcome',
-            component: 'welcome'
-        })
+
+    //动态路由
+    pagesRoutes.map(o => {
+        if (o.default) {
+            $stateProvider.state(o.default)
+        }
+    })
 }

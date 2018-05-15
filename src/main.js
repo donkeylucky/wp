@@ -7,7 +7,7 @@ import ocLazyLoad from 'oclazyload'
 
 import pages from './pages'
 
-//老母
+// 老母
 const BSMS = angular.module('BSMS', [uiRouter, ocLazyLoad, components, pages.name])
 
 // 创建一个路由入口组件

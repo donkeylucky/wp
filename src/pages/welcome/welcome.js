@@ -1,8 +1,9 @@
-import tem from './welcome.html'
-import ctrl from './_welcomeCtrl.js'
+import tem from './tpl.html'
+import welcomeCtrl from './_ctrl.js'
 
 export default {
     name: 'welcome',
     template: tem,
-    controller: ctrl
+    controller: welcomeCtrl,
+    controllerAs: 'ctrl' // controllerAs相当于在html上挂了ng-controller
 }
