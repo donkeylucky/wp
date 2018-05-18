@@ -6,7 +6,7 @@
 // 约定 : 组件中的私有方法请用"下划线开头"以免被打包到组件中
 const components = (r => {
     return r.keys().map(key => r(key))
-})(require.context('./', true, /^\.\/.*\/(?!demo-|_|index).*\.(js)$/))
+})(require.context('./', true, /^\.((?!\/(demo-|_|index)).)*\.(vue|js)$/))
 
 const compArr = []
 
